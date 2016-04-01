@@ -20,19 +20,15 @@
   
   <% else %>
     <div class="field">
-      <%= f.label :customer_id %><br>
-      <%= f.number_field :customer_id %>
-    </div>
-    
-    <div class="field">
       <%= f.label :item_id %><br>
       <%= f.number_field :item_id %>
     </div>
-    <div class="field">
-      <%= f.label :placed_at %><br>
-      <%= f.datetime_select :placed_at %>
-    </div>
 
+    <div class="field">
+      <%= f.label :quantity %><br>
+      <%= f.number_field :quantity %>
+    </div>
+    
   <% end %>
   
   <div class="actions">

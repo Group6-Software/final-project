@@ -22,13 +22,36 @@ class ApplicationController < ActionController::Base
     return true
   end
   
-    helper_method :get_employees
-    def get_employees
-        Employee.all
-    end
+  helper_method :get_employees
+  def get_employees
+      Employee.all
+  end
 
-    helper_method :num_employees
-    def num_employees
-        Employee.count
+  helper_method :num_employees
+  def num_employees
+      Employee.count
+  end
+  
+  helper_method :isCustomer?
+  def isCustomer?
+    if not current_user
+      return false
     end
+    
+    if (Customer.find_by email_address: current_user.email_address) == nil
+      return false
+    end
+    
+    return true
+  end
+  
+  helper_method :get_customers
+  def get_customers
+      Customer.all
+  end
+
+  helper_method :num_customers
+  def num_customers
+      Customer.count
+  end
 end
