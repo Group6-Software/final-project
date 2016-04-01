@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-
+  
   helper_method :get_primary_key_controller
   def get_primary_key_controller(ord)
     ord.get_primary_key_model
@@ -9,7 +9,17 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    if isEmployee?
+      @orders = Order.all
+    
+    elsif isCustomer?
+      customer = Customer.find_by email_address: current_user.email_address
+      @orders = customer.orders
+      
+    else
+      @orders = []
+    end
+      
   end
 
   # GET /orders/1
@@ -40,6 +50,12 @@ class OrdersController < ApplicationController
         @order.order_id = @order.id
         @order.status = "new"
         @order.placed_at = Time.now
+        
+        if isCustomer?
+          customer = Customer.find_by email_address: current_user.email_address
+          @order.customer_id = customer.id
+        end
+        
         @order.save
       else
         format.html { render :new }

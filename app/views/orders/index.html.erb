@@ -6,7 +6,9 @@
   <thead>
     <tr>
       <th>Order</th>
+      <% if isEmployee? %>
       <th>Customer</th>
+      <% end %>
       <th>Item</th>
       <th>Placed at</th>
       <th>Status</th>
@@ -18,7 +20,9 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= order.order_id %></td>
-        <td><%= order.customer_id %></td>
+        <% if isEmployee? %>
+          <td><%= order.customer_id %></td>
+        <% end %>
         <td><%= order.item_id %></td>
         <td><%= order.placed_at %></td>
         <td><%= order.status %></td>
