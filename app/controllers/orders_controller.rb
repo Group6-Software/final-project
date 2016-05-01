@@ -48,6 +48,8 @@ class OrdersController < ApplicationController
         
         # set other things if correct
         @order.order_id = @order.id
+        it = Item.find_by item_id: @order.item_id
+        @order.item_name = it.name
         @order.status = "new"
         @order.placed_at = Time.now
         

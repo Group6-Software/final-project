@@ -10,7 +10,8 @@
         <% if isEmployee? %>
         <th>Customer ID</th>
         <% end %>
-        <th>Item Name/ID</th>
+        <th>Item ID</th>
+        <th>Item Name</th>
         <th>Quantity</th>
         <th>Placed at</th>
         <th>Status</th>
@@ -25,12 +26,13 @@
             <td align="center"><%= order.customer_id %></td>
           <% end %>
           <td align="center"><%= order.item_id %></td>
+          <td align="center"><%= order.item_name %></td>
           <td align="center"><%= order.quantity %></td>
           <td align="center"><%= order.placed_at %></td>
           <td align="center"><%= order.status %></td>
           <td align="center"><%= link_to 'Show', order %></td>
           <!--<td><%= link_to 'Edit', edit_order_path(order) %></td>-->
-          <!--<td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+          <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
