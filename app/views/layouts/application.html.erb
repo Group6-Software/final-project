@@ -1,25 +1,67 @@
 <head>
-  <title>Software Project</title>
+  <title>Haji Sons Online Portal</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div>
-    <% if current_user %>
-      Signed in as <strong><%= current_user.name %></strong>!
-      <% if isEmployee? %>
-        (Employee)
-      <% else %>
-        (Customer)
-      <% end %>
-      
-      <%= link_to "Sign out", signout_path, id: "sign_out" %>
-    <% else %>
-      <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
-    <% end %>
+  <div class="header">
+    <div id="headerImgDiv">
+      <%= image_tag("header.png", :id => "CompanyLogo") %>
+    </div>
+    <div>
+      <ul class="menu">
+        <li><a href="http://www.hajisons.pk/">Home</a></li>
+        <li><a href="http://www.hajisons.pk/seed">Seed</a></li>
+        <li><a href="http://www.hajisons.pk/fertilizer">Fertilizer</a></li>
+        <li><a href="http://www.hajisons.pk/irrigation">Irrigation</a></li>
+        <li><a href="http://www.hajisons.pk/farms">Farms</a></li>
+        <li><a href="http://www.hajisons.pk/exports">Exports</a></li>
+        <li><a href="http://www.hajisons.pk/extensions">Extension</a></li>
+        <li><a href="http://www.hajisons.pk/social-activities">CSR</a></li>
+        <li class= "sign_in" id="login">
+          <% if current_user %>
+            Signed in as <strong><%= current_user.name %></strong>!
+            <% if isEmployee? %>
+              (Employee)
+            <% else %>
+              (Customer)
+            <% end %>
+            
+            <%= link_to "Sign out", signout_path %>
+          <% else %>
+            <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <hr>
   </div>
-  <div>
+
   <%= yield %>
+  </div>
+
+  <div id = "cf">
+    <%= image_tag("other.jpg", :class => "bottom") %>
+    <%= image_tag("tomato.jpg", :class => "top") %>
+    <!--<img class="mySlides" src="tomato.jpg">-->
+    <!--<img class="mySlides" src="other.jpg">-->
+    <!--<a class="w3-btn-floating" onclick="plusDivs(-1)">&#10094;</a>-->
+    <!--<a class="w3-btn-floating" onclick="plusDivs(+1)">&#10095;</a>-->
+  </div>
+  
+  
+  <div class="content"></div>
+  <!--<div class="footer">-->
+  <!--  <hr>-->
+  <!--    <ul class="menu">-->
+  <!--      <li><a href="http://www.hajisons.pk/">Home</a></li>-->
+  <!--    </ul>-->
+  <!--</div>-->
+  <div>
+    <footer>
+      <p>© 2016 <b>Haji Sons</b></p>
+      <a href="#top">Back to Top!</a>
+    </footer>
   </div>
 </body>

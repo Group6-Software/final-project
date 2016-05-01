@@ -1,44 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Orders</h1>
+<div id="allOrdersDiv">
 
-<table>
-  <thead>
-    <tr>
-      <th>Order</th>
-      <% if isEmployee? %>
-      <th>Customer</th>
-      <% end %>
-      <th>Item</th>
-      <th>Quantity</th>
-      <th>Placed at</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
+  <h1>All Orders</h1>
+  <table>
+    <thead>
       <tr>
-        <td><%= order.order_id %></td>
+        <th>Order ID</th>
         <% if isEmployee? %>
-          <td><%= order.customer_id %></td>
+        <th>Customer ID</th>
         <% end %>
-        <td><%= order.item_id %></td>
-        <td><%= order.quantity %></td>
-        <td><%= order.placed_at %></td>
-        <td><%= order.status %></td>
-        <td><%= link_to 'Show', order %></td>
-        <!--<td><%= link_to 'Edit', edit_order_path(order) %></td>-->
-        <!--<td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+        <th>Item Name/ID</th>
+        <th>Quantity</th>
+        <th>Placed at</th>
+        <th>Status</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-
-<% if not isEmployee? %>
-  <%= link_to 'New Order', new_order_path %>
-<% end %>
+    </thead>
+    <tbody class="tblVals">
+      <% @orders.each do |order| %>
+        <tr>
+          <td align="center"><%= order.order_id %></td>
+          <% if isEmployee? %>
+            <td align="center"><%= order.customer_id %></td>
+          <% end %>
+          <td align="center"><%= order.item_id %></td>
+          <td align="center"><%= order.quantity %></td>
+          <td align="center"><%= order.placed_at %></td>
+          <td align="center"><%= order.status %></td>
+          <td align="center"><%= link_to 'Show', order %></td>
+          <!--<td><%= link_to 'Edit', edit_order_path(order) %></td>-->
+          <!--<td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <% if not isEmployee? %>
+    <%= link_to 'New Order', new_order_path %>
+  <% end %>
+</div>

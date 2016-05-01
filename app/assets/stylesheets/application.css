@@ -13,3 +13,75 @@
  *= require_tree .
  *= require_self
  */
+ html body {
+     padding: 0px;
+     margin: 0px;
+ }
+ 
+ #CompanyLogo{
+     height: 100px;
+     width: 1250px;
+ }
+ 
+ .menu li {
+     /*height: 30px;*/
+     display: inline;
+     list-style: none;
+     padding: 0px 10px;
+ }
+ .menu {
+     /*height: 30px;*/
+     margin: 0 auto;
+     padding: 0;
+ }
+#login {
+    float: right;
+}
+.header {
+    background-color: #fbfbfb;
+    padding: 0px;
+    margin: 0px;
+}
+
+#cf {
+  /*position: static;*/
+  /*height:281px;*/
+  /*width:450px;*/
+  /*margin:0 auto;*/
+}
+
+#cf img {
+  position: fixed;
+  left:0;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+
+#cf img.top:hover {
+  opacity:0;
+}
+
+
+footer {
+    /*height: 20px;*/
+    background-color: #fbfbfb;
+    /*padding: 0px;*/
+    /*margin: 0px;*/
+    position: fixed;
+    bottom: 0; /* place it to the bottom */
+    z-index: 9999; /* You may want to be sure no other elements will be displayed on top of it, raise this if it's still being displayed under other elements */
+
+}
+footer p {/**/
+    padding: 0px;
+    margin: 0px;
+    float: left;
+}
+footer a {
+    padding: 0px;
+    margin: 0px;
+    float:right;
+}
+

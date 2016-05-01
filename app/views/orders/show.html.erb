@@ -1,34 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Order:</strong>
-  <%= @order.order_id %>
-</p>
-
-<p>
-  <strong>Customer:</strong>
-  <%= @order.customer_id %>
-</p>
-
-<p>
-  <strong>Item:</strong>
-  <%= @order.item_id %>
-</p>
-
-<p>
-  <strong>Quantity:</strong>
-  <%= @order.quantity %>
-</p>
-
-<p>
-  <strong>Placed at:</strong>
-  <%= @order.placed_at %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @order.status %>
-</p>
+<div id="dspOrderDiv">
+  <p>
+    <strong>Order:</strong>
+    <%= @order.order_id %>
+  </p>
+  
+  <p>
+    <strong>Customer:</strong>
+    <%= @order.customer_id %>
+  </p>
+  
+  <p>
+    <strong>Item:</strong>
+    <%= @order.item_id %>
+  </p>
+  
+  <p>
+    <strong>Quantity:</strong>
+    <%= @order.quantity %>
+  </p>
+  
+  <p>
+    <strong>Placed at:</strong>
+    <%= @order.placed_at %>
+  </p>
+  
+  <p>
+    <strong>Status:</strong>
+    <%= @order.status %>
+  </p>
 
 
 <% if isEmployee? %>
@@ -38,3 +39,5 @@
 <% end %>
   
 <%= link_to 'Back', orders_path %>
+
+</div>
