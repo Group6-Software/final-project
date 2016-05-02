@@ -3,6 +3,26 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript">
+
+  var slideimages = new Array() // create new array to preload images
+  slideimages[0] = new Image() // create new instance of image object
+  slideimages[0].src = "/images/hs-777.jpg" // set image src property to image path, preloading image in the process
+  slideimages[1] = new Image()
+  slideimages[1].src = "/images/Liza.jpg"
+  slideimages[2] = new Image()
+  slideimages[2].src = "/images/vege.jpg"
+
+  </script>
+  <style>
+  /*.first {*/
+  /*  margin: auto;*/
+  /*  width: 60%;*/
+    /*border: 3px solid #73AD21;*/
+    /*padding: 10px;*/
+  /*}*/
+  </style>
+  
 </head>
 <body>
   <div class="header">
@@ -11,14 +31,6 @@
     </div>
     <div>
       <ul class="menu">
-        <li><a href="http://www.hajisons.pk/">Home</a></li>
-        <li><a href="http://www.hajisons.pk/seed">Seed</a></li>
-        <li><a href="http://www.hajisons.pk/fertilizer">Fertilizer</a></li>
-        <li><a href="http://www.hajisons.pk/irrigation">Irrigation</a></li>
-        <li><a href="http://www.hajisons.pk/farms">Farms</a></li>
-        <li><a href="http://www.hajisons.pk/exports">Exports</a></li>
-        <li><a href="http://www.hajisons.pk/extensions">Extension</a></li>
-        <li><a href="http://www.hajisons.pk/social-activities">CSR</a></li>
         <li class= "sign_in" id="login">
           <% if current_user %>
             Signed in as <strong><%= current_user.name %></strong>!
@@ -33,24 +45,58 @@
             <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
           <% end %>
         </li>
+        <!--<ul class="menu">-->
+        <li class="first"><a href="http://www.hajisons.pk/">Home</a></li>
+        <li class="first"><a href="http://www.hajisons.pk/seed">Seed</a></li>
+        <li class="first"><a href="http://www.hajisons.pk/fertilizer">Fertilizer</a></li>
+        <li class="first"><a href="http://www.hajisons.pk/irrigation">Irrigation</a></li>
+        <li class="first"><a href="http://www.hajisons.pk/farms">Farms</a></li>
+        <li class="first"><a href="http://www.hajisons.pk/exports">Exports</a></li>
+        <li class="first"><a href="http://www.hajisons.pk/extensions">Extension</a></li>
+        <li class="first"><a href="http://www.hajisons.pk/social-activities">CSR</a></li>
       </ul>
     </div>
-    <hr>
+    <!--<hr>-->
   </div>
 
   <%= yield %>
   </div>
 
-  <div id = "cf">
-    <%= image_tag("other.jpg", :class => "bottom") %>
-    <%= image_tag("tomato.jpg", :class => "top") %>
+  <!--<div id = "cf">-->
+    <!-- image_tag("tomato.jpg", :class => "top") -->
     <!--<img class="mySlides" src="tomato.jpg">-->
     <!--<img class="mySlides" src="other.jpg">-->
     <!--<a class="w3-btn-floating" onclick="plusDivs(-1)">&#10094;</a>-->
     <!--<a class="w3-btn-floating" onclick="plusDivs(+1)">&#10095;</a>-->
-  </div>
+  <!--</div>-->
+  <!--<img src="/images/vege.jpg" width="130" height="101">-->
+  <% if !current_user%>
+    <div id = "cf">
+    <img src="/images/vege.jpg" id="slide"/>
   
-  
+    <script type="text/javascript">
+    
+    //variable that will increment through the images
+      var step=0
+      
+      function slideit(){
+       //if browser does not support the image object, exit.
+       if (!document.images)
+        return
+       document.getElementById('slide').src = slideimages[step].src
+       if (step<2)
+        step++
+       else
+        step=0
+       //call function "slideit()" every 2.5 seconds
+         setTimeout("slideit()",2500)
+      }
+      
+      slideit()
+      
+    </script>
+    </div>
+  <% end %>
   <div class="content"></div>
   <!--<div class="footer">-->
   <!--  <hr>-->

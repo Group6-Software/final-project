@@ -1,6 +1,17 @@
 source 'https://rubygems.org'
 
+gem 'cucumber-rails', :require => false
 
+gem 'cucumber-rails-training-wheels'
+
+gem 'capybara'
+
+gem 'rspec-rails'
+
+gem 'simplecov'
+
+gem 'minitest', '~> 5.1.0'
+gem 'database_cleaner'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
