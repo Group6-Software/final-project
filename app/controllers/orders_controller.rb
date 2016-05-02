@@ -40,16 +40,19 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
+    item = Item.find_by item_id: @order.item_id
 
     respond_to do |format|
-      if @order.save
+      if (item == nil)
+          format.html { redirect_to items_url, notice: 'You entered an invalid item ID. The following are available:' }
+      elsif @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
         
         # set other things if correct
         @order.order_id = @order.id
-        it = Item.find_by item_id: @order.item_id
-        @order.item_name = it.name
+        @order.item_name = item.name
+        @order.cost = (item.cost) * (@order.quantity)
         @order.status = "new"
         @order.placed_at = Time.now
         
